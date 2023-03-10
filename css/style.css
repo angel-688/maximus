@@ -264,8 +264,8 @@ h6 {
   opacity: 0;
 }
 
-.checkbox__input:checked + .checkbox__label:after {
-  display: block;
+.checkbox__input:checked + .checkbox__label:before {
+  background: url("../img/check.svg") center/0.8125rem 0.75rem no-repeat;
 }
 
 .checkbox__input._form-error + .checkbox__label:before {
@@ -296,15 +296,7 @@ h6 {
       -ms-flex-positive: 0;
           flex-grow: 0;
   border: 2px solid #ffc700;
-}
-
-.checkbox__label::after {
-  content: "";
-  position: absolute;
-  top: 0.25rem;
-  left: 0.21875rem;
-  background: url("../img/check.svg") 0 0/100% no-repeat;
-  display: none;
+  background: none;
 }
 
 .checkbox__text {
@@ -1290,6 +1282,10 @@ h6 {
   border: 1px solid #ff5c00;
 }
 
+.questions__input._form-focus {
+  border: 1px solid #5d5c5c;
+}
+
 .questions__button {
   width: 100%;
 }
@@ -1909,14 +1905,6 @@ h6 {
     height: 1.25rem;
   }
 
-  .checkbox__label::after {
-    width: 0.8125rem;
-  }
-
-  .checkbox__label::after {
-    height: 0.75rem;
-  }
-
   .checkbox__text {
     font-size: 0.9375rem;
   }
@@ -2122,7 +2110,7 @@ h6 {
   }
 
   .questions__title {
-    font-size: 2.1875rem;
+    font-size: 2.125rem;
   }
 
   .questions__text {
@@ -2280,6 +2268,12 @@ h6 {
   }
 }
 
+@media (max-width: 50em) {
+  .checkbox__input:checked + .checkbox__label:before {
+    background: url("../img/check.svg") center/0.6875rem 0.625rem no-repeat;
+  }
+}
+
 @media (max-width: 48em) {
   .header__actions {
     -webkit-column-gap: 1.875rem;
@@ -2332,14 +2326,6 @@ h6 {
 
   .checkbox__label:before {
     height: 0.9375rem;
-  }
-
-  .checkbox__label::after {
-    width: 0.625rem;
-  }
-
-  .checkbox__label::after {
-    height: 0.5625rem;
   }
 
   .checkbox__text {
@@ -2571,7 +2557,7 @@ h6 {
   }
 
   .questions__text:not(:last-child) {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5625rem;
   }
 
   .questions__input {
@@ -3239,6 +3225,10 @@ h6 {
 }
 
 @media (max-width: 29.99875em) {
+  .checkbox__input:checked + .checkbox__label:before {
+    background: url("../img/check.svg") center/0.625rem 0.5625rem no-repeat;
+  }
+
   .header__contact {
     display: none;
   }
@@ -3263,13 +3253,6 @@ h6 {
   .why__body {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 23.75em) {
-  .checkbox__label::after {
-    top: 0.1875rem;
-    left: 0.1875rem;
   }
 }
 
@@ -3357,30 +3340,6 @@ h6 {
 @supports not (height: clamp( 0.9375rem , 0.8238636364rem  +  0.5681818182vw , 1.25rem )) {
     .checkbox__label:before {
       height: calc(0.9375rem + 0.3125 * (100vw - 20rem) / 55);
-    }
-}
-
-@supports (width: clamp( 0.625rem , 0.5568181818rem  +  0.3409090909vw , 0.8125rem )) {
-    .checkbox__label::after {
-      width: clamp( 0.625rem , 0.5568181818rem  +  0.3409090909vw , 0.8125rem );
-    }
-}
-
-@supports not (width: clamp( 0.625rem , 0.5568181818rem  +  0.3409090909vw , 0.8125rem )) {
-    .checkbox__label::after {
-      width: calc(0.625rem + 0.1875 * (100vw - 20rem) / 55);
-    }
-}
-
-@supports (height: clamp( 0.5625rem , 0.4943181818rem  +  0.3409090909vw , 0.75rem )) {
-    .checkbox__label::after {
-      height: clamp( 0.5625rem , 0.4943181818rem  +  0.3409090909vw , 0.75rem );
-    }
-}
-
-@supports not (height: clamp( 0.5625rem , 0.4943181818rem  +  0.3409090909vw , 0.75rem )) {
-    .checkbox__label::after {
-      height: calc(0.5625rem + 0.1875 * (100vw - 20rem) / 55);
     }
 }
 
@@ -3996,15 +3955,15 @@ h6 {
     }
 }
 
-@supports (font-size: clamp( 1.375rem , 1.0795454545rem  +  1.4772727273vw , 2.1875rem )) {
+@supports (font-size: clamp( 1.375rem , 1.1022727273rem  +  1.3636363636vw , 2.125rem )) {
     .questions__title {
-      font-size: clamp( 1.375rem , 1.0795454545rem  +  1.4772727273vw , 2.1875rem );
+      font-size: clamp( 1.375rem , 1.1022727273rem  +  1.3636363636vw , 2.125rem );
     }
 }
 
-@supports not (font-size: clamp( 1.375rem , 1.0795454545rem  +  1.4772727273vw , 2.1875rem )) {
+@supports not (font-size: clamp( 1.375rem , 1.1022727273rem  +  1.3636363636vw , 2.125rem )) {
     .questions__title {
-      font-size: calc(1.375rem + 0.8125 * (100vw - 20rem) / 55);
+      font-size: calc(1.375rem + 0.75 * (100vw - 20rem) / 55);
     }
 }
 
@@ -4020,15 +3979,15 @@ h6 {
     }
 }
 
-@supports (margin-bottom: clamp( 1.25rem , 1.0227272727rem  +  1.1363636364vw , 1.875rem )) {
+@supports (margin-bottom: clamp( 1.5625rem , 1.4488636364rem  +  0.5681818182vw , 1.875rem )) {
     .questions__text:not(:last-child) {
-      margin-bottom: clamp( 1.25rem , 1.0227272727rem  +  1.1363636364vw , 1.875rem );
+      margin-bottom: clamp( 1.5625rem , 1.4488636364rem  +  0.5681818182vw , 1.875rem );
     }
 }
 
-@supports not (margin-bottom: clamp( 1.25rem , 1.0227272727rem  +  1.1363636364vw , 1.875rem )) {
+@supports not (margin-bottom: clamp( 1.5625rem , 1.4488636364rem  +  0.5681818182vw , 1.875rem )) {
     .questions__text:not(:last-child) {
-      margin-bottom: calc(1.25rem + 0.625 * (100vw - 20rem) / 55);
+      margin-bottom: calc(1.5625rem + 0.3125 * (100vw - 20rem) / 55);
     }
 }
 
