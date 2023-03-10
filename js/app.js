@@ -1,6 +1,6 @@
 (() => {
     "use strict";
-    const modules_flsModules = {};
+    const flsModules = {};
     function isWebp() {
         function testWebP(callback) {
             let webP = new Image;
@@ -267,7 +267,7 @@
             }
         }));
     }
-    function functions_FLS(message) {
+    function FLS(message) {
         setTimeout((() => {
             if (window.FLS) console.log(message);
         }), 0);
@@ -315,7 +315,7 @@
             }
         }
     }
-    let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+    let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
         const targetBlockElement = document.querySelector(targetBlock);
         if (targetBlockElement) {
             let headerItem = "";
@@ -350,9 +350,255 @@
                     behavior: "smooth"
                 });
             }
-            functions_FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
-        } else functions_FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
+            FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
+        } else FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
     };
+    function formFieldsInit(options = {
+        viewPass: false,
+        autoHeight: false
+    }) {
+        const formFields = document.querySelectorAll("input[placeholder],textarea[placeholder]");
+        if (formFields.length) formFields.forEach((formField => {
+            if (!formField.hasAttribute("data-placeholder-nohide")) formField.dataset.placeholder = formField.placeholder;
+        }));
+        document.body.addEventListener("focusin", (function(e) {
+            const targetElement = e.target;
+            if ("INPUT" === targetElement.tagName || "TEXTAREA" === targetElement.tagName) {
+                if (targetElement.dataset.placeholder) targetElement.placeholder = "";
+                if (!targetElement.hasAttribute("data-no-focus-classes")) {
+                    targetElement.classList.add("_form-focus");
+                    targetElement.parentElement.classList.add("_form-focus");
+                }
+                formValidate.removeError(targetElement);
+            }
+        }));
+        document.body.addEventListener("focusout", (function(e) {
+            const targetElement = e.target;
+            if ("INPUT" === targetElement.tagName || "TEXTAREA" === targetElement.tagName) {
+                if (targetElement.dataset.placeholder) targetElement.placeholder = targetElement.dataset.placeholder;
+                if (!targetElement.hasAttribute("data-no-focus-classes")) {
+                    targetElement.classList.remove("_form-focus");
+                    targetElement.parentElement.classList.remove("_form-focus");
+                }
+                if (targetElement.hasAttribute("data-validate")) formValidate.validateInput(targetElement);
+            }
+        }));
+        if (options.viewPass) document.addEventListener("click", (function(e) {
+            let targetElement = e.target;
+            if (targetElement.closest('[class*="__viewpass"]')) {
+                let inputType = targetElement.classList.contains("_viewpass-active") ? "password" : "text";
+                targetElement.parentElement.querySelector("input").setAttribute("type", inputType);
+                targetElement.classList.toggle("_viewpass-active");
+            }
+        }));
+        if (options.autoHeight) {
+            const textareas = document.querySelectorAll("textarea[data-autoheight]");
+            if (textareas.length) {
+                textareas.forEach((textarea => {
+                    const startHeight = textarea.hasAttribute("data-autoheight-min") ? Number(textarea.dataset.autoheightMin) : Number(textarea.offsetHeight);
+                    const maxHeight = textarea.hasAttribute("data-autoheight-max") ? Number(textarea.dataset.autoheightMax) : 1 / 0;
+                    setHeight(textarea, Math.min(startHeight, maxHeight));
+                    textarea.addEventListener("input", (() => {
+                        if (textarea.scrollHeight > startHeight) {
+                            textarea.style.height = `auto`;
+                            setHeight(textarea, Math.min(Math.max(textarea.scrollHeight, startHeight), maxHeight));
+                        }
+                    }));
+                }));
+                function setHeight(textarea, height) {
+                    textarea.style.height = `${height}px`;
+                }
+            }
+        }
+    }
+    let formValidate = {
+        getErrors(form) {
+            let error = 0;
+            let formRequiredItems = form.querySelectorAll("*[data-required]");
+            if (formRequiredItems.length) formRequiredItems.forEach((formRequiredItem => {
+                if ((null !== formRequiredItem.offsetParent || "SELECT" === formRequiredItem.tagName) && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
+            }));
+            return error;
+        },
+        validateInput(formRequiredItem) {
+            let error = 0;
+            if ("email" === formRequiredItem.dataset.required) {
+                formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+                if (this.emailTest(formRequiredItem)) {
+                    this.addError(formRequiredItem);
+                    error++;
+                } else this.removeError(formRequiredItem);
+            } else if ("checkbox" === formRequiredItem.type && !formRequiredItem.checked) {
+                this.addError(formRequiredItem);
+                error++;
+            } else if ("text" === formRequiredItem.type) if ("" === formRequiredItem.value) {
+                this.addError(formRequiredItem);
+                error++;
+            } else if (null === formRequiredItem.value.match(/^[а-яА-ЯёЁa-zA-Z]+$/)) {
+                this.addTextError(formRequiredItem);
+                error++;
+            } else this.removeError(formRequiredItem); else if ("tel" === formRequiredItem.getAttribute("type")) {
+                if ("" === formRequiredItem.value) {
+                    this.addError(formRequiredItem);
+                    error++;
+                } else if (null === formRequiredItem.value.match(/^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/)) {
+                    this.addNumberError(formRequiredItem);
+                    error++;
+                }
+            } else if (!formRequiredItem.value.trim()) {
+                this.addError(formRequiredItem);
+                error++;
+            } else this.removeError(formRequiredItem);
+            return error;
+        },
+        addError(formRequiredItem) {
+            formRequiredItem.classList.add("_form-error");
+            formRequiredItem.parentElement.classList.add("_form-error");
+            let inputError = formRequiredItem.parentElement.querySelector(".form__error");
+            if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+            if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
+        },
+        addTextError(formRequiredItem) {
+            formRequiredItem.classList.add("_form-error");
+            formRequiredItem.parentElement.classList.add("_form-error");
+            let inputError = formRequiredItem.parentElement.querySelector(".form__error");
+            if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+            if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">Вводите буквы</div>`);
+        },
+        addNumberError(formRequiredItem) {
+            formRequiredItem.classList.add("_form-error");
+            formRequiredItem.parentElement.classList.add("_form-error");
+            let inputError = formRequiredItem.parentElement.querySelector(".form__error");
+            if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+            if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">Вводите цифры</div>`);
+        },
+        removeError(formRequiredItem) {
+            formRequiredItem.classList.remove("_form-error");
+            formRequiredItem.parentElement.classList.remove("_form-error");
+            if (formRequiredItem.parentElement.querySelector(".form__error")) formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
+        },
+        formClean(form) {
+            form.reset();
+            setTimeout((() => {
+                let inputs = form.querySelectorAll("input,textarea");
+                for (let index = 0; index < inputs.length; index++) {
+                    const el = inputs[index];
+                    el.parentElement.classList.remove("_form-focus");
+                    el.classList.remove("_form-focus");
+                    formValidate.removeError(el);
+                }
+                let checkboxes = form.querySelectorAll(".checkbox__input");
+                if (checkboxes.length > 0) for (let index = 0; index < checkboxes.length; index++) {
+                    const checkbox = checkboxes[index];
+                    checkbox.checked = false;
+                }
+                if (flsModules.select) {
+                    let selects = form.querySelectorAll(".select");
+                    if (selects.length) for (let index = 0; index < selects.length; index++) {
+                        const select = selects[index].querySelector("select");
+                        flsModules.select.selectBuild(select);
+                    }
+                }
+            }), 0);
+        },
+        emailTest(formRequiredItem) {
+            return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
+        }
+    };
+    function formSubmit() {
+        const forms = document.forms;
+        if (forms.length) for (const form of forms) {
+            form.addEventListener("submit", (function(e) {
+                const form = e.target;
+                formSubmitAction(form, e);
+            }));
+            form.addEventListener("reset", (function(e) {
+                const form = e.target;
+                formValidate.formClean(form);
+            }));
+        }
+        async function formSubmitAction(form, e) {
+            const error = !form.hasAttribute("data-no-validate") ? formValidate.getErrors(form) : 0;
+            if (0 === error) {
+                const ajax = form.hasAttribute("data-ajax");
+                if (ajax) {
+                    e.preventDefault();
+                    const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
+                    const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
+                    const formData = new FormData(form);
+                    form.classList.add("_sending");
+                    const response = await fetch(formAction, {
+                        method: formMethod,
+                        body: formData
+                    });
+                    if (response.ok) {
+                        let responseResult = await response.json();
+                        form.classList.remove("_sending");
+                        formSent(form, responseResult);
+                    } else {
+                        alert("Ошибка");
+                        form.classList.remove("_sending");
+                    }
+                } else if (form.hasAttribute("data-dev")) {
+                    e.preventDefault();
+                    formSent(form);
+                }
+            } else {
+                e.preventDefault();
+                if (form.querySelector("._form-error") && form.hasAttribute("data-goto-error")) {
+                    const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : "._form-error";
+                    gotoBlock(formGoToErrorClass, true, 1e3);
+                }
+            }
+        }
+        function formSent(form, responseResult = ``) {
+            document.dispatchEvent(new CustomEvent("formSent", {
+                detail: {
+                    form
+                }
+            }));
+            setTimeout((() => {
+                if (flsModules.popup) {
+                    const popup = form.dataset.popupMessage;
+                    popup ? flsModules.popup.open(popup) : null;
+                }
+            }), 0);
+            formValidate.formClean(form);
+            formLogging(`Форма отправлена!`);
+        }
+        function formLogging(message) {
+            FLS(`[Формы]: ${message}`);
+        }
+    }
+    function inputValidation() {
+        const validateInputs = document.querySelectorAll("[data-input-validate]");
+        if (validateInputs.length) validateInputs.forEach((validateInput => {
+            const errorText = validateInput.dataset.inputError;
+            const inputParent = validateInput.parentElement;
+            validateInput.addEventListener("input", (function(e) {
+                if ("text" === validateInput.dataset.inputValidate) {
+                    !validateInput.value.match(/^[a-zа-яёіїє\s]+$/iu) ? addError(inputParent, errorText, validateInput) : removeError(inputParent, validateInput);
+                    0 === validateInput.value.trim().length ? removeError(inputParent, validateInput) : null;
+                } else if ("tel" === validateInput.dataset.inputValidate) {
+                    if (!validateInput.value.match(/^[0-9+()-\s]*$/)) addError(inputParent, errorText, validateInput); else if (validateInput.value.match(/\d/g) && validateInput.value.match(/\d/g).length > 15) addError(inputParent, "Некорректный номер телефона", validateInput); else removeError(inputParent, validateInput);
+                    0 === validateInput.value.trim().length ? removeError(inputParent, validateInput) : null;
+                }
+            }));
+        }));
+        function addError(parent, text, input) {
+            const errorInput = parent.querySelector(".form__error");
+            input.classList.add("_form-error");
+            parent.classList.add("_form-error");
+            errorInput ? errorInput.remove() : null;
+            parent.insertAdjacentHTML("beforeend", `<div class="form__error">${text}</div>`);
+        }
+        function removeError(parent, input) {
+            const errorInput = parent.querySelector(".form__error");
+            input.classList.remove("_form-error");
+            parent.classList.remove("_form-error");
+            errorInput ? errorInput.remove() : null;
+        }
+    }
     function ssr_window_esm_isObject(obj) {
         return null !== obj && "object" === typeof obj && "constructor" in obj && obj.constructor === Object;
     }
@@ -4021,7 +4267,7 @@
             this.scrollWatcherLogging(`Я перестал следить за ${targetElement.classList}`);
         }
         scrollWatcherLogging(message) {
-            this.config.logging ? functions_FLS(`[Наблюдатель]: ${message}`) : null;
+            this.config.logging ? FLS(`[Наблюдатель]: ${message}`) : null;
         }
         scrollWatcherCallback(entry, observer) {
             const targetElement = entry.target;
@@ -4034,7 +4280,7 @@
             }));
         }
     }
-    modules_flsModules.watcher = new ScrollWatcher({});
+    flsModules.watcher = new ScrollWatcher({});
     let addWindowScrollEvent = false;
     function pageNavigation() {
         document.addEventListener("click", pageNavigationAction);
@@ -4048,11 +4294,11 @@
                     const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
                     const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
                     const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
-                    if (modules_flsModules.fullpage) {
+                    if (flsModules.fullpage) {
                         const fullpageSectionId = +document.querySelector(`${gotoLinkSelector}`).closest("[data-fp-section]").dataset.fpId;
-                        fullpageSectionId ? modules_flsModules.fullpage.switchingSection(fullpageSectionId) : null;
+                        fullpageSectionId ? flsModules.fullpage.switchingSection(fullpageSectionId) : null;
                         document.documentElement.classList.contains("menu-open") ? menuClose() : null;
-                    } else gotoblock_gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                    } else gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
                     e.preventDefault();
                 }
             } else if ("watcherCallback" === e.type && e.detail) {
@@ -4075,7 +4321,7 @@
         if (getHash()) {
             let goToHash;
             if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
-            goToHash ? gotoblock_gotoBlock(goToHash, true, 500, 20) : null;
+            goToHash ? gotoBlock(goToHash, true, 500, 20) : null;
         }
     }
     function headerScroll() {
@@ -4196,164 +4442,172 @@
     }
     const da = new DynamicAdapt("max");
     da.init();
-    var script = document.createElement("script");
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCktdpMS2-t57NjcXY5y8ybEpHc_RjNffo&callback=initMap";
-    script.async = true;
-    window.initMap = function() {
-        const positionObj = {
-            lat: 50.42138483093366,
-            lng: 30.615464154689775
+    window.addEventListener("load", (function(e) {
+        var script = document.createElement("script");
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCktdpMS2-t57NjcXY5y8ybEpHc_RjNffo&callback=initMap";
+        script.async = true;
+        window.initMap = function() {
+            const positionObj = {
+                lat: 50.42138483093366,
+                lng: 30.615464154689775
+            };
+            let positionCenter = {
+                lat: 50.41936059340142,
+                lng: 30.59495104462669
+            };
+            const icon = {
+                url: "img/contacts/marker.png",
+                scaledSize: new google.maps.Size(63, 92)
+            };
+            if (window.matchMedia("(max-width: 991.98px) and (min-width: 767.98)").matches) positionCenter = {
+                lat: 50.41251139028108,
+                lng: 30.574566394634875
+            }; else if (window.matchMedia("(max-width: 767.98px)").matches) positionCenter = {
+                lat: 50.40935830561582,
+                lng: 30.620725912900223
+            };
+            console.log(positionCenter);
+            let map = new google.maps.Map(document.getElementById("map"), {
+                center: positionCenter,
+                zoom: 13,
+                styles: [ {
+                    featureType: "water",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#e9e9e9"
+                    }, {
+                        lightness: 17
+                    } ]
+                }, {
+                    featureType: "landscape",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#f5f5f5"
+                    }, {
+                        lightness: 20
+                    } ]
+                }, {
+                    featureType: "road.highway",
+                    elementType: "geometry.fill",
+                    stylers: [ {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 17
+                    } ]
+                }, {
+                    featureType: "road.highway",
+                    elementType: "geometry.stroke",
+                    stylers: [ {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 29
+                    }, {
+                        weight: .2
+                    } ]
+                }, {
+                    featureType: "road.arterial",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 18
+                    } ]
+                }, {
+                    featureType: "road.local",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 16
+                    } ]
+                }, {
+                    featureType: "poi",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#f5f5f5"
+                    }, {
+                        lightness: 21
+                    } ]
+                }, {
+                    featureType: "poi.park",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#dedede"
+                    }, {
+                        lightness: 21
+                    } ]
+                }, {
+                    elementType: "labels.text.stroke",
+                    stylers: [ {
+                        visibility: "on"
+                    }, {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 16
+                    } ]
+                }, {
+                    elementType: "labels.text.fill",
+                    stylers: [ {
+                        saturation: 36
+                    }, {
+                        color: "#333333"
+                    }, {
+                        lightness: 40
+                    } ]
+                }, {
+                    elementType: "labels.icon",
+                    stylers: [ {
+                        visibility: "off"
+                    } ]
+                }, {
+                    featureType: "transit",
+                    elementType: "geometry",
+                    stylers: [ {
+                        color: "#f2f2f2"
+                    }, {
+                        lightness: 19
+                    } ]
+                }, {
+                    featureType: "administrative",
+                    elementType: "geometry.fill",
+                    stylers: [ {
+                        color: "#fefefe"
+                    }, {
+                        lightness: 20
+                    } ]
+                }, {
+                    featureType: "administrative",
+                    elementType: "geometry.stroke",
+                    stylers: [ {
+                        color: "#fefefe"
+                    }, {
+                        lightness: 17
+                    }, {
+                        weight: 1.2
+                    } ]
+                } ],
+                disableDefaultUI: true
+            });
+            new google.maps.Marker({
+                icon,
+                position: positionObj,
+                map,
+                title: "some"
+            });
         };
-        let positionCenter = {
-            lat: 50.41936059340142,
-            lng: 30.59495104462669
-        };
-        const icon = {
-            url: "img/contacts/marker.png",
-            scaledSize: new google.maps.Size(63, 92)
-        };
-        if (window.matchMedia("(max-width: 991.98px) and (min-width: 767.98)").matches) positionCenter = {
-            lat: 50.41251139028108,
-            lng: 30.574566394634875
-        }; else if (window.matchMedia("(max-width: 767.98px)").matches) positionCenter = {
-            lat: 50.40935830561582,
-            lng: 30.620725912900223
-        };
-        console.log(positionCenter);
-        let map = new google.maps.Map(document.getElementById("map"), {
-            center: positionCenter,
-            zoom: 13,
-            styles: [ {
-                featureType: "water",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#e9e9e9"
-                }, {
-                    lightness: 17
-                } ]
-            }, {
-                featureType: "landscape",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#f5f5f5"
-                }, {
-                    lightness: 20
-                } ]
-            }, {
-                featureType: "road.highway",
-                elementType: "geometry.fill",
-                stylers: [ {
-                    color: "#ffffff"
-                }, {
-                    lightness: 17
-                } ]
-            }, {
-                featureType: "road.highway",
-                elementType: "geometry.stroke",
-                stylers: [ {
-                    color: "#ffffff"
-                }, {
-                    lightness: 29
-                }, {
-                    weight: .2
-                } ]
-            }, {
-                featureType: "road.arterial",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#ffffff"
-                }, {
-                    lightness: 18
-                } ]
-            }, {
-                featureType: "road.local",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#ffffff"
-                }, {
-                    lightness: 16
-                } ]
-            }, {
-                featureType: "poi",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#f5f5f5"
-                }, {
-                    lightness: 21
-                } ]
-            }, {
-                featureType: "poi.park",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#dedede"
-                }, {
-                    lightness: 21
-                } ]
-            }, {
-                elementType: "labels.text.stroke",
-                stylers: [ {
-                    visibility: "on"
-                }, {
-                    color: "#ffffff"
-                }, {
-                    lightness: 16
-                } ]
-            }, {
-                elementType: "labels.text.fill",
-                stylers: [ {
-                    saturation: 36
-                }, {
-                    color: "#333333"
-                }, {
-                    lightness: 40
-                } ]
-            }, {
-                elementType: "labels.icon",
-                stylers: [ {
-                    visibility: "off"
-                } ]
-            }, {
-                featureType: "transit",
-                elementType: "geometry",
-                stylers: [ {
-                    color: "#f2f2f2"
-                }, {
-                    lightness: 19
-                } ]
-            }, {
-                featureType: "administrative",
-                elementType: "geometry.fill",
-                stylers: [ {
-                    color: "#fefefe"
-                }, {
-                    lightness: 20
-                } ]
-            }, {
-                featureType: "administrative",
-                elementType: "geometry.stroke",
-                stylers: [ {
-                    color: "#fefefe"
-                }, {
-                    lightness: 17
-                }, {
-                    weight: 1.2
-                } ]
-            } ],
-            disableDefaultUI: true
-        });
-        new google.maps.Marker({
-            icon,
-            position: positionObj,
-            map,
-            title: "some"
-        });
-    };
-    document.body.appendChild(script);
+        document.body.appendChild(script);
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();
     fullVHfix();
     showMore();
+    formFieldsInit({
+        viewPass: false,
+        autoHeight: false
+    });
+    formSubmit();
+    inputValidation();
     pageNavigation();
     headerScroll();
 })();

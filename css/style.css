@@ -245,6 +245,18 @@ h6 {
   margin-bottom: 0.3125em;
 }
 
+.checkbox .form__error {
+  position: absolute;
+  bottom: -0.625rem;
+  left: 0;
+  -webkit-transform: translate(0%, 100%);
+      -ms-transform: translate(0%, 100%);
+          transform: translate(0%, 100%);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: #ff5c00;
+}
+
 .checkbox__input {
   position: absolute;
   width: 0;
@@ -254,6 +266,10 @@ h6 {
 
 .checkbox__input:checked + .checkbox__label:after {
   display: block;
+}
+
+.checkbox__input._form-error + .checkbox__label:before {
+  border: 2px solid #ff5c00;
 }
 
 .checkbox__label {
@@ -1218,8 +1234,24 @@ h6 {
   line-height: 1.4;
 }
 
+.questions__line {
+  position: relative;
+}
+
 .questions__line:not(:last-child) {
   margin-bottom: 1.25rem;
+}
+
+.questions__line .form__error {
+  position: absolute;
+  top: -0.3125rem;
+  left: 0;
+  -webkit-transform: translate(0%, -100%);
+      -ms-transform: translate(0%, -100%);
+          transform: translate(0%, -100%);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: #ff5c00;
 }
 
 .questions__input {
@@ -1231,6 +1263,7 @@ h6 {
   width: 100%;
   font-size: 1.125rem;
   line-height: 1.1666666667;
+  outline: none;
 }
 
 .questions__input::-webkit-input-placeholder {
@@ -1253,6 +1286,10 @@ h6 {
   color: #a5a5a5;
 }
 
+.questions__input._form-error {
+  border: 1px solid #ff5c00;
+}
+
 .questions__button {
   width: 100%;
 }
@@ -1263,7 +1300,6 @@ h6 {
 
 .questions__girl-image {
   position: absolute;
-  top: 0rem;
   left: -19.375rem;
   width: 100.875rem;
   height: auto;
@@ -1364,11 +1400,11 @@ h6 {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
-  z-index: 1;
+  z-index: -1;
   opacity: 0;
-  -webkit-transition: opacity 0.3s ease 0s;
-  -o-transition: opacity 0.3s ease 0s;
-  transition: opacity 0.3s ease 0s;
+  -webkit-transition: opacity 0.5s ease 0s;
+  -o-transition: opacity 0.5s ease 0s;
+  transition: opacity 0.5s ease 0s;
 }
 
 .slide-feedback__bottom {
@@ -1767,6 +1803,7 @@ h6 {
 
   .feedback__slide:not(.swiper-slide-next, .swiper-slide-active) .slide-feedback__item::before {
     opacity: 1;
+    z-index: 1;
   }
 }
 
@@ -1813,6 +1850,12 @@ h6 {
 
   .main-block__big-bush {
     max-width: 10.4375rem;
+  }
+}
+
+@media (min-width: 93.75em) {
+  .questions__girl-image {
+    top: 2.5rem;
   }
 }
 
@@ -2224,6 +2267,10 @@ h6 {
 }
 
 @media (max-width: 62em) {
+  .questions__girl-image {
+    top: 0.0000000625rem;
+  }
+
   .contacts__wide-bash {
     max-width: 18.75rem;
   }
@@ -2727,7 +2774,7 @@ h6 {
   }
 
   .page__questions {
-    padding-bottom: 21.5rem;
+    padding-bottom: 23.75rem;
   }
 
   .questions__girl-image {
@@ -4230,7 +4277,7 @@ h6 {
   }
 
   .page__questions {
-    padding-bottom: 35.875rem;
+    padding-bottom: 37.5rem;
   }
 
   .questions__girl-image {
@@ -4251,15 +4298,15 @@ h6 {
     }
 }
 
-@supports (padding-bottom: clamp( 21.5rem , 16.2727272727rem  +  26.1363636364vw , 35.875rem )) {
+@supports (padding-bottom: clamp( 23.75rem , 18.75rem  +  25vw , 37.5rem )) {
     .page__questions {
-      padding-bottom: clamp( 21.5rem , 16.2727272727rem  +  26.1363636364vw , 35.875rem );
+      padding-bottom: clamp( 23.75rem , 18.75rem  +  25vw , 37.5rem );
     }
 }
 
-@supports not (padding-bottom: clamp( 21.5rem , 16.2727272727rem  +  26.1363636364vw , 35.875rem )) {
+@supports not (padding-bottom: clamp( 23.75rem , 18.75rem  +  25vw , 37.5rem )) {
     .page__questions {
-      padding-bottom: calc(21.5rem + 14.375 * (100vw - 20rem) / 55);
+      padding-bottom: calc(23.75rem + 13.75 * (100vw - 20rem) / 55);
     }
 }
 
@@ -4542,6 +4589,20 @@ h6 {
 @supports not (max-width: clamp( 6.875rem , 4.8295454545rem  +  10.2272727273vw , 12.5rem )) {
     .services__woman-rider {
       max-width: calc(6.875rem + 5.625 * (100vw - 20rem) / 55);
+    }
+}
+}
+
+@media (min-width: 62em) and (max-width: 93.75em) {
+@supports (top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem )) {
+    .questions__girl-image {
+      top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem );
+    }
+}
+
+@supports not (top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem )) {
+    .questions__girl-image {
+      top: calc(0.0000000625rem + 2.4999999375 * (100vw - 62rem) / 31.75);
     }
 }
 }

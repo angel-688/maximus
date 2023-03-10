@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230305133735">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230310122033">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -393,14 +393,14 @@
 								пробное занятие</p>
 							<form action="#" class="questions__form">
 								<div class="questions__line">
-									<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Ваше имя" class="questions__input">
+									<input data-input-validate="text" data-input-error="Вводите буквы" data-required autocomplete="off" type="text" name="form[]" data-error="Заполните поле" placeholder="Ваше имя" class="questions__input">
 								</div>
 								<div class="questions__line">
-									<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Ваш телефон" class="questions__input">
+									<input data-input-validate="tel" data-input-error="Вводите цифры" data-required autocomplete="off" type="tel" name="form[]" data-error="Заполните поле" placeholder="Ваш телефон" class="questions__input">
 								</div>
 								<button type="submit" class="questions__button button"><span>Задать вопрос</span></button>
 								<div class="questions__checkbox checkbox">
-									<input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+									<input data-required id="c_1" data-error="Подтвердите согласие" class="checkbox__input" type="checkbox" value="1" name="form[]">
 									<label for="c_1" class="checkbox__label"><span class="checkbox__text">Даю согласие на <a href="#">обработку данных</a></span></label>
 								</div>
 							</form>
@@ -624,7 +624,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230305133735"></script>
+	<script src="js/app.min.js?_v=20230310122033"></script>
 </body>
 
 </html>
