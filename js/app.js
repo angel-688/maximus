@@ -4572,8 +4572,7 @@
         var lazyload_min = __webpack_require__(732);
         new lazyload_min({
             elements_selector: "[data-src],[data-srcset]",
-            class_loaded: "_lazy-loaded",
-            use_native: true
+            class_loaded: "_lazy-loaded"
         });
         class ScrollWatcher {
             constructor(props) {
@@ -4854,7 +4853,6 @@
                     lat: 50.40935830561582,
                     lng: 30.620725912900223
                 };
-                console.log(positionCenter);
                 let map = new google.maps.Map(document.getElementById("map"), {
                     center: positionCenter,
                     zoom: 13,

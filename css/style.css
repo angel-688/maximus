@@ -1278,12 +1278,12 @@ h6 {
   color: #a5a5a5;
 }
 
-.questions__input._form-error {
-  border: 1px solid #ff5c00;
-}
-
 .questions__input._form-focus {
   border: 1px solid #5d5c5c;
+}
+
+.questions__input._form-error {
+  border: 1px solid #ff5c00;
 }
 
 .questions__button {
@@ -1296,6 +1296,7 @@ h6 {
 
 .questions__girl-image {
   position: absolute;
+  top: 0;
   left: -19.375rem;
   width: 100.875rem;
   height: auto;
@@ -1849,12 +1850,6 @@ h6 {
   }
 }
 
-@media (min-width: 93.75em) {
-  .questions__girl-image {
-    top: 2.5rem;
-  }
-}
-
 @media (min-width: 106.25em) {
   .contacts__wide-bash {
     max-width: 29.0625rem;
@@ -2255,10 +2250,6 @@ h6 {
 }
 
 @media (max-width: 62em) {
-  .questions__girl-image {
-    top: 0.0000000625rem;
-  }
-
   .contacts__wide-bash {
     max-width: 18.75rem;
   }
@@ -4548,20 +4539,6 @@ h6 {
 @supports not (max-width: clamp( 6.875rem , 4.8295454545rem  +  10.2272727273vw , 12.5rem )) {
     .services__woman-rider {
       max-width: calc(6.875rem + 5.625 * (100vw - 20rem) / 55);
-    }
-}
-}
-
-@media (min-width: 62em) and (max-width: 93.75em) {
-@supports (top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem )) {
-    .questions__girl-image {
-      top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem );
-    }
-}
-
-@supports not (top: clamp( 0.0000000625rem , -4.8818895792rem  +  7.8740155512vw , 2.5rem )) {
-    .questions__girl-image {
-      top: calc(0.0000000625rem + 2.4999999375 * (100vw - 62rem) / 31.75);
     }
 }
 }
