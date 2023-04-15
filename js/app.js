@@ -724,7 +724,7 @@
                 };
                 document.documentElement.classList.contains("menu-open") ? menuClose() : null;
                 if ("undefined" !== typeof SmoothScroll) (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
-                    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+                    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY + 1;
                     targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
                     targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
                     window.scrollTo({
@@ -735,18 +735,15 @@
                 FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
             } else FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
         };
+        let forms_status = false;
         function formFieldsInit(options = {
             viewPass: false,
-            autoHeight: false
+            autoHeight: false,
+            inputValidate: false
         }) {
-            const formFields = document.querySelectorAll("input[placeholder],textarea[placeholder]");
-            if (formFields.length) formFields.forEach((formField => {
-                if (!formField.hasAttribute("data-placeholder-nohide")) formField.dataset.placeholder = formField.placeholder;
-            }));
             document.body.addEventListener("focusin", (function(e) {
                 const targetElement = e.target;
                 if ("INPUT" === targetElement.tagName || "TEXTAREA" === targetElement.tagName) {
-                    if (targetElement.dataset.placeholder) targetElement.placeholder = "";
                     if (!targetElement.hasAttribute("data-no-focus-classes")) {
                         targetElement.classList.add("_form-focus");
                         targetElement.parentElement.classList.add("_form-focus");
@@ -757,12 +754,18 @@
             document.body.addEventListener("focusout", (function(e) {
                 const targetElement = e.target;
                 if ("INPUT" === targetElement.tagName || "TEXTAREA" === targetElement.tagName) {
-                    if (targetElement.dataset.placeholder) targetElement.placeholder = targetElement.dataset.placeholder;
                     if (!targetElement.hasAttribute("data-no-focus-classes")) {
                         targetElement.classList.remove("_form-focus");
                         targetElement.parentElement.classList.remove("_form-focus");
                     }
-                    if (targetElement.hasAttribute("data-validate")) formValidate.validateInput(targetElement);
+                    targetElement.hasAttribute("data-validate") ? formValidate.validateInput(targetElement) : null;
+                }
+            }));
+            if (options.inputValidate) document.body.addEventListener("input", (function(e) {
+                const targetElement = e.target;
+                if ("INPUT" === targetElement.tagName && "email" !== targetElement.dataset.required && "" !== targetElement.dataset.required) {
+                    formValidate.inputValidate(targetElement, true);
+                    forms_status = true;
                 }
             }));
             if (options.viewPass) document.addEventListener("click", (function(e) {
@@ -798,7 +801,7 @@
                 let error = 0;
                 let formRequiredItems = form.querySelectorAll("*[data-required]");
                 if (formRequiredItems.length) formRequiredItems.forEach((formRequiredItem => {
-                    if ((null !== formRequiredItem.offsetParent || "SELECT" === formRequiredItem.tagName) && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
+                    if ((null !== formRequiredItem.offsetParent || "SELECT" === formRequiredItem.tagName) && !formRequiredItem.disabled) if (forms_status) error += this.validateInput(formRequiredItem) + this.inputValidate(formRequiredItem, true); else error += this.validateInput(formRequiredItem);
                 }));
                 return error;
             },
@@ -813,25 +816,33 @@
                 } else if ("checkbox" === formRequiredItem.type && !formRequiredItem.checked) {
                     this.addError(formRequiredItem);
                     error++;
-                } else if ("text" === formRequiredItem.type) if ("" === formRequiredItem.value) {
-                    this.addError(formRequiredItem);
-                    error++;
-                } else if (null === formRequiredItem.value.match(/^[а-яА-ЯёЁa-zA-Z]+$/)) {
-                    this.addTextError(formRequiredItem);
-                    error++;
-                } else this.removeError(formRequiredItem); else if ("tel" === formRequiredItem.getAttribute("type")) {
-                    if ("" === formRequiredItem.value) {
-                        this.addError(formRequiredItem);
-                        error++;
-                    } else if (null === formRequiredItem.value.match(/^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/)) {
-                        this.addNumberError(formRequiredItem);
-                        error++;
-                    }
                 } else if (!formRequiredItem.value.trim()) {
                     this.addError(formRequiredItem);
                     error++;
                 } else this.removeError(formRequiredItem);
                 return error;
+            },
+            inputValidate(formRequiredItem, start = false) {
+                if (start) {
+                    let error = 0;
+                    if ("text" === formRequiredItem.dataset.required) if (!formRequiredItem.value.match(/^[a-zа-яёіїє\s]*$/iu)) {
+                        this.addInputError(formRequiredItem);
+                        error++;
+                    } else {
+                        this.removeInputError(formRequiredItem);
+                        error >= 1 ? error = 0 : null;
+                    } else if ("tel" === formRequiredItem.dataset.required) if (!formRequiredItem.value.match(/^[0-9+()-\s]*$/)) {
+                        this.addInputError(formRequiredItem);
+                        error++;
+                    } else if (formRequiredItem.value.match(/\d/g) && formRequiredItem.value.match(/\d/g).length > 15) {
+                        this.addInputError(formRequiredItem, "Некорректный номер телефона");
+                        error++;
+                    } else {
+                        this.removeInputError(formRequiredItem);
+                        error >= 1 ? error = 0 : null;
+                    }
+                    return error;
+                }
             },
             addError(formRequiredItem) {
                 formRequiredItem.classList.add("_form-error");
@@ -840,24 +851,23 @@
                 if (inputError) formRequiredItem.parentElement.removeChild(inputError);
                 if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
             },
-            addTextError(formRequiredItem) {
-                formRequiredItem.classList.add("_form-error");
-                formRequiredItem.parentElement.classList.add("_form-error");
-                let inputError = formRequiredItem.parentElement.querySelector(".form__error");
-                if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-                if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">Вводите буквы</div>`);
-            },
-            addNumberError(formRequiredItem) {
-                formRequiredItem.classList.add("_form-error");
-                formRequiredItem.parentElement.classList.add("_form-error");
-                let inputError = formRequiredItem.parentElement.querySelector(".form__error");
-                if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-                if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">Вводите цифры</div>`);
-            },
             removeError(formRequiredItem) {
                 formRequiredItem.classList.remove("_form-error");
                 formRequiredItem.parentElement.classList.remove("_form-error");
                 if (formRequiredItem.parentElement.querySelector(".form__error")) formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
+            },
+            addInputError(formRequiredItem, text = formRequiredItem.dataset.inputError) {
+                const errorInput = formRequiredItem.parentElement.querySelector(".form__input-error");
+                formRequiredItem.classList.add("_form-input-error");
+                formRequiredItem.parentElement.classList.add("_form-input-error");
+                errorInput ? errorInput.remove() : null;
+                if (formRequiredItem.dataset.inputError) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__input-error">${text}</div>`);
+            },
+            removeInputError(formRequiredItem) {
+                const errorInput = formRequiredItem.parentElement.querySelector(".form__input-error");
+                formRequiredItem.classList.remove("_form-input-error");
+                formRequiredItem.parentElement.classList.remove("_form-input-error");
+                errorInput ? errorInput.remove() : null;
             },
             formClean(form) {
                 form.reset();
@@ -918,7 +928,7 @@
                             form.classList.remove("_sending");
                             formSent(form, responseResult);
                         } else {
-                            alert("Ошибка");
+                            alert("Помилка");
                             form.classList.remove("_sending");
                         }
                     } else if (form.hasAttribute("data-dev")) {
@@ -946,39 +956,10 @@
                     }
                 }), 0);
                 formValidate.formClean(form);
-                formLogging(`Форма отправлена!`);
+                formLogging(`Форму відправлено!`);
             }
             function formLogging(message) {
-                FLS(`[Формы]: ${message}`);
-            }
-        }
-        function inputValidation() {
-            const validateInputs = document.querySelectorAll("[data-input-validate]");
-            if (validateInputs.length) validateInputs.forEach((validateInput => {
-                const errorText = validateInput.dataset.inputError;
-                const inputParent = validateInput.parentElement;
-                validateInput.addEventListener("input", (function(e) {
-                    if ("text" === validateInput.dataset.inputValidate) {
-                        !validateInput.value.match(/^[a-zа-яёіїє\s]+$/iu) ? addError(inputParent, errorText, validateInput) : removeError(inputParent, validateInput);
-                        0 === validateInput.value.trim().length ? removeError(inputParent, validateInput) : null;
-                    } else if ("tel" === validateInput.dataset.inputValidate) {
-                        if (!validateInput.value.match(/^[0-9+()-\s]*$/)) addError(inputParent, errorText, validateInput); else if (validateInput.value.match(/\d/g) && validateInput.value.match(/\d/g).length > 15) addError(inputParent, "Некорректный номер телефона", validateInput); else removeError(inputParent, validateInput);
-                        0 === validateInput.value.trim().length ? removeError(inputParent, validateInput) : null;
-                    }
-                }));
-            }));
-            function addError(parent, text, input) {
-                const errorInput = parent.querySelector(".form__error");
-                input.classList.add("_form-error");
-                parent.classList.add("_form-error");
-                errorInput ? errorInput.remove() : null;
-                parent.insertAdjacentHTML("beforeend", `<div class="form__error">${text}</div>`);
-            }
-            function removeError(parent, input) {
-                const errorInput = parent.querySelector(".form__error");
-                input.classList.remove("_form-error");
-                parent.classList.remove("_form-error");
-                errorInput ? errorInput.remove() : null;
+                FLS(`[Форми]: ${message}`);
             }
         }
         function ssr_window_esm_isObject(obj) {
@@ -4571,8 +4552,9 @@
         }));
         var lazyload_min = __webpack_require__(732);
         new lazyload_min({
-            elements_selector: "[data-src],[data-srcset]",
-            class_loaded: "_lazy-loaded"
+            elements_selector: "[data-src],[data-srcset],[data-bg]",
+            class_loaded: "_lazy-loaded",
+            use_native: true
         });
         class ScrollWatcher {
             constructor(props) {
@@ -4990,10 +4972,10 @@
         showMore();
         formFieldsInit({
             viewPass: false,
-            autoHeight: false
+            autoHeight: false,
+            inputValidate: true
         });
         formSubmit();
-        inputValidation();
         pageNavigation();
         headerScroll();
     })();

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230310145403">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230415160939">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,10 +25,10 @@
 						<nav class="menu__body">
 							<div class="menu__close"></div>
 							<ul class="menu__list">
-								<li data-goto-header data-goto=".about" class="menu__item"><a href="" class="menu__link _active">О нас</a></li>
-								<li data-goto-header data-goto=".services" class="menu__item"><a href="" class="menu__link">Услуги и цены</a></li>
-								<li data-goto-header data-goto=".clients" class="menu__item"><a href="" class="menu__link">Фотоальбом</a></li>
-								<li data-goto-header data-goto=".contacts" class="menu__item"><a href="" class="menu__link">Контакты</a></li>
+								<li data-goto=".about" class="menu__item"><a href="" class="menu__link">О нас</a></li>
+								<li data-goto=".services" class="menu__item"><a href="" class="menu__link">Услуги и цены</a></li>
+								<li id="clients" data-goto=".clients" class="menu__item"><a href="" class="menu__link">Фотоальбом</a></li>
+								<li id="contacts" data-goto=".contacts" class="menu__item"><a href="" class="menu__link">Контакты</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -62,13 +62,13 @@
 				<div class="main-block__cloud"><picture><source srcset="img/main-block/cloud.webp" type="image/webp"><img src="img/main-block/cloud.png" alt="Облака"></picture></div>
 				<div class="main-block__bg-ibg"><picture><source srcset="img/main-block/main-bg.webp" type="image/webp"><img src="img/main-block/main-bg.png" alt="Фон с зелёными лугами"></picture></div>
 			</section>
-			<section data-watch class="page__about about">
+			<section data-watch="navigator" data-watch-threshold="0.4" class="page__about about">
 				<div class="about__container">
 					<div class="about__title title-block">
 						<h2 class="title-block__title">О нашем клубе</h2>
 					</div>
 					<div class="about__body">
-						<div class="about__image"><picture><source data-srcset="img/about/about-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/about/about-rider.png" alt="Наездник прыгает через препятствие"></picture></div>
+						<div class="about__image"><picture><source data-srcset="img/about/about-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/about/about-rider.png" alt="Наездник прыгает через препятствие"></picture></div>
 						<div class="about__info">
 							<div class="about__advantages advantages-about">
 								<div class="advantages-about__advantage">
@@ -113,25 +113,25 @@
 					</div>
 					<div class="why__body">
 						<div class="why__item">
-							<div class="why__icon"><picture><source data-srcset="img/why/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/why/01.png" alt="Иконки локации"></picture></div>
+							<div class="why__icon"><picture><source data-srcset="img/why/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/why/01.png" alt="Иконки локации"></picture></div>
 							<div class="why__label">Удобное расположение</div>
 							<div class="why__text">Мы находимся недалеко
 								от автостанции «Восточный» чтобы вам было удобно добираться</div>
 						</div>
 						<div class="why__item">
-							<div class="why__icon"><picture><source data-srcset="img/why/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/why/02.png" alt="деревянный стол со скамьями"></picture></div>
+							<div class="why__icon"><picture><source data-srcset="img/why/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/why/02.png" alt="деревянный стол со скамьями"></picture></div>
 							<div class="why__label">Обеденная зона</div>
 							<div class="why__text">Имеется столовая, чтобы Вы могли перекусить и немного отдохнуть. Бесплатно
 								чай, кофе, печенки.</div>
 						</div>
 						<div class="why__item">
-							<div class="why__icon"><picture><source data-srcset="img/why/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/why/03.png" alt="секундомер"></picture></div>
+							<div class="why__icon"><picture><source data-srcset="img/why/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/why/03.png" alt="секундомер"></picture></div>
 							<div class="why__label">Профессиональные тренера</div>
 							<div class="why__text">МНаши преподаватели имеют награды в конном спорте,
 								и отличные отзывы среди наших учеников</div>
 						</div>
 						<div class="why__item">
-							<div class="why__icon"><picture><source data-srcset="img/why/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/why/04.png" alt="машина возле знака парковка"></picture></div>
+							<div class="why__icon"><picture><source data-srcset="img/why/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/why/04.png" alt="машина возле знака парковка"></picture></div>
 							<div class="why__label">Бесплатная парковка</div>
 							<div class="why__text">У нас имеется просторная парковка, чтобы вы могли без проблем припарковать
 								свой автомобиль</div>
@@ -139,7 +139,7 @@
 					</div>
 				</div>
 			</section>
-			<section data-watch class="page__services services">
+			<section data-watch="navigator" data-watch-threshold="0.4" class="page__services services">
 				<div class="services__title title-block">
 					<h2 class="title-block__title">Направления клуба</h2>
 					<div class="title-block__subtitle">Подзаголовок блока</div>
@@ -148,14 +148,14 @@
 					<div class="services__container">
 						<div class="services__cards">
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/01.jpg" alt="жокей на коне"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/01.jpg" alt="жокей на коне"></picture></div>
 								<h3 class="card-services__title">Уроки верховой езды</h3>
 								<p class="card-services__text">Уроки профессиональной верховой езды для любителей и
 									начинающих
 								</p>
 							</article>
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/02.jpg" alt="жокей на коне перепрыгивают препятствие"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/02.jpg" alt="жокей на коне перепрыгивают препятствие"></picture></div>
 								<h3 class="card-services__title">Прогулки верхом
 									с тренером</h3>
 								<p class="card-services__text">Тренировка клиентов, подготовка
@@ -164,14 +164,14 @@
 								</p>
 							</article>
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/03.jpg" alt="девушка на коне с белой гривой"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/03.jpg" alt="девушка на коне с белой гривой"></picture></div>
 								<h3 class="card-services__title">Фотосессии</h3>
 								<p class="card-services__text">Уроки профессиональной верховой езды для любителей и
 									начинающих
 								</p>
 							</article>
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/04.jpg" alt="девушка жокей в белой одежде на коне"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/04.jpg" alt="девушка жокей в белой одежде на коне"></picture></div>
 								<h3 class="card-services__title">Прогулки верхом
 									с тренером</h3>
 								<p class="card-services__text">Тренировка клиентов, подготовка
@@ -180,14 +180,14 @@
 								</p>
 							</article>
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/05.jpg" alt="девушка ласкает лошадь"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/05.jpg" alt="девушка ласкает лошадь"></picture></div>
 								<h3 class="card-services__title">Фотосессии</h3>
 								<p class="card-services__text">Уроки профессиональной верховой езды для любителей и
 									начинающих
 								</p>
 							</article>
 							<article class="services__card card-services">
-								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/06.jpg" alt="девушка прикасается к носу коня ладонью"></picture></div>
+								<div class="card-services__image-ibg"><picture><source data-srcset="img/services/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/06.jpg" alt="девушка прикасается к носу коня ладонью"></picture></div>
 								<h3 class="card-services__title">Прогулки верхом
 									с тренером</h3>
 								<p class="card-services__text">Тренировка клиентов, подготовка
@@ -197,15 +197,15 @@
 							</article>
 						</div>
 						<button type="button" class="services__button button"><span>записаться</span></button>
-						<div class="services__child-rider"><picture><source data-srcset="img/services/baby-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/baby-rider.png" alt="девушка на коне улыбается"></picture></div>
-						<div class="services__woman-rider"><picture><source data-srcset="img/services/woman-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/woman-rider.png" alt="ребёнок держит коня за упряжку"></picture></div>
+						<div class="services__child-rider"><picture><source data-srcset="img/services/baby-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/baby-rider.png" alt="девушка на коне улыбается"></picture></div>
+						<div class="services__woman-rider"><picture><source data-srcset="img/services/woman-rider.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/woman-rider.png" alt="ребёнок держит коня за упряжку"></picture></div>
 					</div>
-					<div class="services__sky-ibg"><picture><source data-srcset="img/services/sky.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/sky.png" alt="небо"></picture></div>
-					<div class="services__lawn"><picture><source data-srcset="img/services/lawn.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/services/lawn.png" alt="зелёное поле"></picture></div>
-					<div class="services__cloud"><picture><source data-srcset="img/main-block/cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/main-block/cloud.png" alt="облака"></picture></div>
+					<div class="services__sky-ibg"><picture><source data-srcset="img/services/sky.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/sky.png" alt="небо"></picture></div>
+					<div class="services__lawn"><picture><source data-srcset="img/services/lawn.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/services/lawn.png" alt="зелёное поле"></picture></div>
+					<div class="services__cloud"><picture><source data-srcset="img/main-block/cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/main-block/cloud.png" alt="облака"></picture></div>
 				</div>
 			</section>
-			<section data-watch class="page__clients clients">
+			<section data-watch="navigator" data-watch-threshold="0.5" class="page__clients clients">
 				<div class="clients__title title-block">
 					<h2 class="title-block__title">Наши посетители</h2>
 				</div>
@@ -214,103 +214,122 @@
 						<div class="clients__wrapper swiper-wrapper">
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/01.jpg" alt="девушка стоит рядом с конём с белой гривой"></picture>
+									<picture><source data-srcset="img/clients/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/01.jpg" alt="девушка стоит рядом с конём с белой гривой"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/02.jpg" alt="ребёнок на коне, а внизу мама страхует его"></picture>
+									<picture><source data-srcset="img/clients/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/02.jpg" alt="ребёнок на коне, а внизу мама страхует его"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/03.jpg" alt="3 наездника бегут на лошадях"></picture>
+									<picture><source data-srcset="img/clients/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/03.jpg" alt="3 наездника бегут на лошадях"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/04.jpg" alt="жокей бегает на лошади"></picture>
+									<picture><source data-srcset="img/clients/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/04.jpg" alt="жокей бегает на лошади"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/05.jpg" alt="женщина гладит коня"></picture>
+									<picture><source data-srcset="img/clients/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/05.jpg" alt="женщина гладит коня"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/06.jpg" alt="женщина жокей бегает на коне по полю"></picture>
+									<picture><source data-srcset="img/clients/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/06.jpg" alt="женщина жокей бегает на коне по полю"></picture>
 								</div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/07.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/07.jpg" alt="рыжеволосая девушка на коне зимой"></picture>
+									<picture><source data-srcset="img/clients/07.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/07.jpg" alt="рыжеволосая девушка на коне зимой"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/08.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/08.jpg" alt="девушка позирует на фоне наездника на рыжем коне"></picture>
+									<picture><source data-srcset="img/clients/08.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/08.jpg" alt="девушка позирует на фоне наездника на рыжем коне"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/09.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/09.jpg" alt="девушка в платье позирует рядом с белым конём"></picture>
+									<picture><source data-srcset="img/clients/09.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/09.jpg" alt="девушка в платье позирует рядом с белым конём"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/10.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/10.jpg" alt="два жокея на конной ферме"></picture>
+									<picture><source data-srcset="img/clients/10.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/10.jpg" alt="два жокея на конной ферме"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/10.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/10.jpg" alt="два жокея на конной ферме"></picture>
+									<picture><source data-srcset="img/clients/10.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/10.jpg" alt="два жокея на конной ферме"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/09.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/09.jpg" alt="девушка в платье позирует рядом с белым конём"></picture>
+									<picture><source data-srcset="img/clients/09.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/09.jpg" alt="девушка в платье позирует рядом с белым конём"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/08.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/08.jpg" alt="девушка позирует на фоне наездника на рыжем коне"></picture>
+									<picture><source data-srcset="img/clients/08.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/08.jpg" alt="девушка позирует на фоне наездника на рыжем коне"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/07.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/07.jpg" alt="рыжеволосая девушка на коне зимой"></picture>
+									<picture><source data-srcset="img/clients/07.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/07.jpg" alt="рыжеволосая девушка на коне зимой"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/06.jpg" alt="женщина жокей бегает на коне по полю"></picture>
+									<picture><source data-srcset="img/clients/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/06.jpg" alt="женщина жокей бегает на коне по полю"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/05.jpg" alt="женщина гладит коня"></picture>
+									<picture><source data-srcset="img/clients/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/05.jpg" alt="женщина гладит коня"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/04.jpg" alt="жокей бегает на лошади"></picture>
+									<picture><source data-srcset="img/clients/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/04.jpg" alt="жокей бегает на лошади"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_small">
-									<picture><source data-srcset="img/clients/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/03.jpg" alt="3 наездника бегут на лошадях"></picture>
+									<picture><source data-srcset="img/clients/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/03.jpg" alt="3 наездника бегут на лошадях"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_medium">
-									<picture><source data-srcset="img/clients/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/02.jpg" alt="ребёнок на коне, а внизу мама страхует его"></picture>
+									<picture><source data-srcset="img/clients/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/02.jpg" alt="ребёнок на коне, а внизу мама страхует его"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 							<div class="clients__slide swiper-slide">
 								<div class="clients__image clients__image_big">
-									<picture><source data-srcset="img/clients/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/clients/01.jpg" alt="девушка стоит рядом с конём с белой гривой"></picture>
+									<picture><source data-srcset="img/clients/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/clients/01.jpg" alt="девушка стоит рядом с конём с белой гривой"></picture>
 								</div>
+								<div class="swiper-lazy-preloader"></div>
 							</div>
 						</div>
 						<div class="clients__actions actions">
@@ -333,28 +352,36 @@
 							<div class="horses__wrapper swiper-wrapper">
 								<div class="horses__slide slide-horses swiper-slide">
 									<div class="slide-horses__item">
-										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/horses/01.jpg" alt="тёмно рыжая лошадь"></picture></div>
+										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/horses/01.jpg" alt="тёмно рыжая лошадь"></picture>
+											<div class="swiper-lazy-preloader"></div>
+										</div>
 										<div class="slide-horses__title">Жазель</div>
 										<div class="slide-horses__text">Уроки профессиональной верховой езды для любителей и начинающих</div>
 									</div>
 								</div>
 								<div class="horses__slide slide-horses swiper-slide">
 									<div class="slide-horses__item">
-										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/horses/03.jpg" alt="тёмно рыжая лошадь"></picture></div>
+										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/horses/03.jpg" alt="тёмно рыжая лошадь"></picture>
+											<div class="swiper-lazy-preloader"></div>
+										</div>
 										<div class="slide-horses__title">Юджин</div>
 										<div class="slide-horses__text">Уроки профессиональной верховой езды для любителей и начинающих</div>
 									</div>
 								</div>
 								<div class="horses__slide slide-horses swiper-slide">
 									<div class="slide-horses__item">
-										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/horses/02.jpg" alt="светлорыжая лошадь"></picture></div>
+										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/horses/02.jpg" alt="светлорыжая лошадь"></picture>
+											<div class="swiper-lazy-preloader"></div>
+										</div>
 										<div class="slide-horses__title">Мелисса</div>
 										<div class="slide-horses__text">Уроки профессиональной верховой езды для любителей и начинающих</div>
 									</div>
 								</div>
 								<div class="horses__slide slide-horses swiper-slide">
 									<div class="slide-horses__item">
-										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/horses/04.jpg" alt="чёрный конь"></picture></div>
+										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/horses/04.jpg" alt="чёрный конь"></picture>
+											<div class="swiper-lazy-preloader"></div>
+										</div>
 										<div class="slide-horses__title">Циан</div>
 										<div class="slide-horses__text">Уроки профессиональной верховой езды для любителей и начинающих</div>
 										</di>
@@ -362,7 +389,9 @@
 								</div>
 								<div class="horses__slide slide-horses swiper-slide">
 									<div class="slide-horses__item">
-										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/horses/05.jpg" alt="белая лошадь"></picture></div>
+										<div class="slide-horses__image-ibg"><picture><source data-srcset="img/horses/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/horses/05.jpg" alt="белая лошадь"></picture>
+											<div class="swiper-lazy-preloader"></div>
+										</div>
 										<div class="slide-horses__title">Хесана</div>
 										<div class="slide-horses__text">Уроки профессиональной верховой езды для любителей и начинающих</div>
 									</div>
@@ -389,10 +418,10 @@
 								пробное занятие</p>
 							<form action="#" class="questions__form">
 								<div class="questions__line">
-									<input data-input-validate="text" data-input-error="Вводите буквы" data-required autocomplete="off" type="text" name="form[]" data-error="Заполните поле" placeholder="Ваше имя" class="questions__input">
+									<input data-required="text" data-input-error="Вводите буквы" autocomplete="off" type="text" name="form[]" data-error="Заполните поле" placeholder="Ваше имя" class="questions__input">
 								</div>
 								<div class="questions__line">
-									<input data-input-validate="tel" data-input-error="Вводите цифры" data-required autocomplete="off" type="tel" name="form[]" data-error="Заполните поле" placeholder="Ваш телефон" class="questions__input">
+									<input data-required="tel" data-input-error="Вводите цифры" autocomplete="off" type="tel" name="form[]" data-error="Заполните поле" placeholder="Ваш телефон" class="questions__input">
 								</div>
 								<button type="submit" class="questions__button button"><span>Задать вопрос</span></button>
 								<div class="questions__checkbox checkbox">
@@ -401,14 +430,14 @@
 								</div>
 							</form>
 						</div>
-						<div data-da=".questions,991.98,3" class="questions__girl-image"><picture><source data-srcset="img/questions/girl-with-horse.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/questions/girl-with-horse.png" alt="девушка ведёт собаку и пони"></picture></div>
+						<div data-da=".questions,991.98,3" class="questions__girl-image"><picture><source data-srcset="img/questions/girl-with-horse.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/questions/girl-with-horse.png" alt="девушка ведёт собаку и пони"></picture></div>
 
 					</div>
 				</div>
-				<div class="questions__bg-ibg"><picture><source data-srcset="img/questions/ques-bg.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/questions/ques-bg.jpg" alt="зимний лес"></picture></div>
-				<div class="questions__clouds-top"><picture><source data-srcset="img/questions/questions-cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/questions/questions-cloud.png" alt="облака"></picture></div>
-				<div class="questions__clouds-bottom"><picture><source data-srcset="img/questions/questions-cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/questions/questions-cloud.png" alt="облака"></picture></div>
-				<div class="questions__bush"><picture><source data-srcset="img/questions/bush-questions.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/questions/bush-questions.png" alt="куст ели"></picture></div>
+				<div class="questions__bg-ibg"><picture><source data-srcset="img/questions/ques-bg.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/questions/ques-bg.jpg" alt="зимний лес"></picture></div>
+				<div class="questions__clouds-top"><picture><source data-srcset="img/questions/questions-cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/questions/questions-cloud.png" alt="облака"></picture></div>
+				<div class="questions__clouds-bottom"><picture><source data-srcset="img/questions/questions-cloud.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/questions/questions-cloud.png" alt="облака"></picture></div>
+				<div class="questions__bush"><picture><source data-srcset="img/questions/bush-questions.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/questions/bush-questions.png" alt="куст ели"></picture></div>
 			</div>
 			<section class="page__feedback feedback">
 				<div class="feedback__container">
@@ -435,7 +464,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="slide-feedback__quotes"><picture><source data-srcset="img/feedback/quote.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/feedback/quote.png" alt="кавычки"></picture></div>
+											<div class="slide-feedback__quotes"><picture><source data-srcset="img/feedback/quote.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/feedback/quote.png" alt="кавычки"></picture></div>
 										</div>
 									</div>
 								</div>
@@ -456,7 +485,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="slide-feedback__quotes"><picture><source data-srcset="img/feedback/quote.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/feedback/quote.png" alt="кавычки"></picture></div>
+											<div class="slide-feedback__quotes"><picture><source data-srcset="img/feedback/quote.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/feedback/quote.png" alt="кавычки"></picture></div>
 										</div>
 									</div>
 								</div>
@@ -468,7 +497,7 @@
 										</div>
 										<div class="slide-feedback__bottom">
 											<div class="slide-feedback__user-block user-feedback">
-												<div class="user-feedback__avatar"><picture><source data-srcset="img/feedback/avatar-3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/feedback/avatar-3.png" alt="русая девушка"></picture></div>
+												<div class="user-feedback__avatar"><picture><source data-srcset="img/feedback/avatar-3.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/feedback/avatar-3.png" alt="русая девушка"></picture></div>
 												<div class="user-feedback__name-block">
 													<div class="user-feedback__name">Светлана Мирная</div>
 													<div class="user-feedback__socials">
@@ -556,7 +585,7 @@
 					</div>
 				</div>
 			</section>
-			<section data-watch class="page__contacts contacts">
+			<section data-watch="navigator" data-watch-threshold="0.4" class="page__contacts contacts">
 				<div class="contacts__container">
 					<div class="contacts__item">
 						<div class="contacts__title title-block">
@@ -575,16 +604,16 @@
 							</li>
 						</ul>
 						<div class="contacts__socials">
-							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/insta.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/icons/insta.png" alt="иконка инстаграма"></picture></a>
-							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/youtube.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/icons/youtube.png" alt="иконка ютуба"></picture></a>
-							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/whatsapp.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/icons/whatsapp.png" alt="иконка ватсапа"></picture></a>
-							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/vk.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/icons/vk.png" alt="иконка вконтакте"></picture></a>
+							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/insta.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/icons/insta.png" alt="иконка инстаграма"></picture></a>
+							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/youtube.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/icons/youtube.png" alt="иконка ютуба"></picture></a>
+							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/whatsapp.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/icons/whatsapp.png" alt="иконка ватсапа"></picture></a>
+							<a href="#" class="contacts__social"><picture><source data-srcset="img/icons/vk.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  loading="lazy" data-src="img/icons/vk.png" alt="иконка вконтакте"></picture></a>
 						</div>
 					</div>
 				</div>
 				<div id="map"></div>
-				<div class="contacts__wide-bash"><picture><source data-srcset="img/contacts/small-bush.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/contacts/small-bush.png" alt="широкий низкий куст"></picture></div>
-				<div class="contacts__tall-bash"><picture><source data-srcset="img/contacts/big-bush.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  data-src="img/contacts/big-bush.png" alt="высокий тонкий куст"></picture></div>
+				<div class="contacts__wide-bash"><picture><source srcset="img/contacts/small-bush.webp" type="image/webp"><img src="img/contacts/small-bush.png" alt="широкий низкий куст"></picture></div>
+				<div class="contacts__tall-bash"><picture><source srcset="img/contacts/big-bush.webp" type="image/webp"><img src="img/contacts/big-bush.png" alt="высокий тонкий куст"></picture></div>
 			</section>
 		</main>
 		<footer class="footer">
@@ -620,7 +649,7 @@
 		</div>
 	</div>
 </div> -->
-	<script src="js/app.min.js?_v=20230310145403"></script>
+	<script src="js/app.min.js?_v=20230415160939"></script>
 </body>
 
 </html>
