@@ -823,26 +823,16 @@
                 return error;
             },
             inputValidate(formRequiredItem, start = false) {
-                if (start) {
-                    let error = 0;
-                    if ("text" === formRequiredItem.dataset.required) if (!formRequiredItem.value.match(/^[a-zа-яёіїє\s]*$/iu)) {
-                        this.addInputError(formRequiredItem);
-                        error++;
-                    } else {
-                        this.removeInputError(formRequiredItem);
-                        error >= 1 ? error = 0 : null;
-                    } else if ("tel" === formRequiredItem.dataset.required) if (!formRequiredItem.value.match(/^[0-9+()-\s]*$/)) {
-                        this.addInputError(formRequiredItem);
-                        error++;
-                    } else if (formRequiredItem.value.match(/\d/g) && formRequiredItem.value.match(/\d/g).length > 15) {
-                        this.addInputError(formRequiredItem, "Некорректный номер телефона");
-                        error++;
-                    } else {
-                        this.removeInputError(formRequiredItem);
-                        error >= 1 ? error = 0 : null;
-                    }
-                    return error;
+                if (!start) return;
+                const isText = "text" === formRequiredItem.dataset.required;
+                const isTel = "tel" === formRequiredItem.dataset.required;
+                let error = 0;
+                if (isText && !/^[a-zа-яёіїє\s]*$/iu.test(formRequiredItem.value)) error++; else if (isTel) if (!/^[0-9+()-\s]*$/.test(formRequiredItem.value)) error++; else if (/\d/g.test(formRequiredItem.value) && /\d/g.test(formRequiredItem.value).length > 15) {
+                    this.addInputError(formRequiredItem, "Некорректный номер телефона");
+                    error++;
                 }
+                0 === error ? this.removeInputError(formRequiredItem) : this.addInputError(formRequiredItem);
+                return error;
             },
             addError(formRequiredItem) {
                 formRequiredItem.classList.add("_form-error");
